@@ -5,3 +5,9 @@ extends: google
 parserOptions:
   ecmaVersion: latest
 rules: {}
+
+{
+  "parserOptions": {
+      "sourceType": "module",
+  }
+}
