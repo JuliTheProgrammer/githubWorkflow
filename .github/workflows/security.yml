@@ -1,6 +1,6 @@
 name: Security
 on: 
-  push:
+  #push:
 
 #Injection Attacks
 #Unknown Actions

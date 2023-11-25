@@ -1,6 +1,6 @@
 name: Ouput
 on: 
-  push:
+  #push:
 
 jobs:
   test:
