@@ -1,6 +1,7 @@
 name: Artifact Demo
 on: 
   push:
+  workflow_dispatch:
 
 jobs:
   test:
@@ -19,3 +20,4 @@ jobs:
           path: |
             dist
             package.json
+            
