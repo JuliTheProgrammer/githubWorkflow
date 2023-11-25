@@ -1,0 +1,21 @@
+name: Ouput
+on: 
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      secret-key: ${{ steps.secret.outputs.secret }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Output Something
+        id: secret
+        run: echo "secret=password123" >> $GITHUB_OUTPUT
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output 
+        run: echo ${{ needs.test.outputs.secret-key }}

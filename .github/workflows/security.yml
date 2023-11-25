@@ -1,0 +1,21 @@
+name: Security
+on: 
+  push:
+
+#Injection Attacks
+#Unknown Actions
+#Mitigate Permissons
+
+permissions:
+  issues: read
+
+jobs:
+  test:
+    permissions:
+      pull_request: read
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Issue Name
+        env:
+          user-input: ${{ github.issues.ouputs.title }}
+        run: echo ${{ env.user-input }}

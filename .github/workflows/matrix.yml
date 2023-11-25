@@ -1,14 +1,21 @@
-name: Matrix Demo
+name: Node.js CI
 on:
   push:
+ 
 
 jobs:
   test:
+    continue-on-error: true
     strategy:
-      matrix:
-        os: [ubuntu-last, windows-last, macos-last]
+      matrix: 
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node-version: [12,13,14,15]
     runs-on: ${{ matrix.os }}
-
     steps:
-      - name: Checkout Code
+      - name: Checkout Repo
         uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node
+        with:
+          node-version: ${{ matrix.node-version }}
+      

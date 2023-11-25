@@ -1,0 +1,33 @@
+name: Node.js CI
+on:
+  push:
+ 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Cache Dependencies
+        uses: action/cache@v3
+        with:
+          #Would be dependencies but just as an example
+          path: |
+            ~/.npm
+        key: node-modules-${{ hashFiles(**/package-lock.json) }}
+      - name: Install Dependencies
+        run: npm ci
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+        key: node-modules-${{ hashFiles(**/package-lock.json) }}
+      - name: Install Dependencies
+        run: npm ci
+    
