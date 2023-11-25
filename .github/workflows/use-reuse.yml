@@ -1,0 +1,19 @@
+name: Ouput
+on: 
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    outputs:
+      secret-key: ${{ steps.secret.outputs.secret }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Output Something
+        id: secret
+        run: echo "secret=password123" >> $GITHUB_OUTPUT
+  build:
+    needs: test
+    uses:  /workspaces/gh-actions-demo/.github/workflows/reusable.yml
+        
