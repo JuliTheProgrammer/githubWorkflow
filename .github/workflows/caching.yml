@@ -14,7 +14,7 @@ jobs:
         with:
           #Would be dependencies but just as an example
           path: ~/.npm
-          key: node-modules-${{ hashFiles(**/package-lock.json) }}
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
   build:
@@ -26,7 +26,7 @@ jobs:
         with:
           path: |
             ~/.npm
-        key: node-modules-${{ hashFiles(**/package-lock.json) }}
+        key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install Dependencies
         run: npm ci
     
